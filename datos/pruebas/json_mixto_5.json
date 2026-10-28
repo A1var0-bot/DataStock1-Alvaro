@@ -1,0 +1,9 @@
+{
+  "productos": [
+    {"codigo":"TEC-001","nombre":"Teclado USB","precio":19.95,"stock":12,"categoriaId":1,"proveedorId":1},
+    {"codigo":"RAT-002","nombre":"Ratón inalámbrico","precio":14.50,"stock":25,"categoriaId":1,"proveedorId":1},
+    {"codigo":"MON-003","nombre":"Monitor 24 pulgadas","precio":149.99,"stock":6,"categoriaId":2,"proveedorId":2},
+    {"codigo":"TEC-004","nombre":"Teclado mecánico","precio":-5,"stock":8,"categoriaId":1,"proveedorId":1},
+    {"codigo":"","nombre":"Producto sin código","precio":10,"stock":3,"categoriaId":1,"proveedorId":1}
+  ]
+}

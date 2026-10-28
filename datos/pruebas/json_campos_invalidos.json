@@ -1,0 +1,15 @@
+{
+  "productos": [
+    {"codigo":"OK-001","nombre":"Producto correcto","precio":5.25,"stock":2,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-01","nombre":"Precio texto","precio":"abc","stock":2,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-02","nombre":"Stock decimal","precio":5,"stock":1.5,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-03","nombre":"Falta stock","precio":5,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-04","nombre":"Stock negativo","precio":5,"stock":-1,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-05","nombre":"Categoria cero","precio":5,"stock":1,"categoriaId":0,"proveedorId":1},
+    {"codigo":"CODIGO-MUY-LARGO-1","nombre":"Código largo","precio":5,"stock":1,"categoriaId":1,"proveedorId":1},
+    {"codigo":"BAD-06","nombre":"AB","precio":5,"stock":1,"categoriaId":1,"proveedorId":1},
+    "esto no es un objeto",
+    {"nombre":"Sin clave codigo","precio":5,"stock":1,"categoriaId":1,"proveedorId":1},
+    {"codigo":"ok-001","nombre":"Duplicado en el mismo fichero","precio":5,"stock":1,"categoriaId":1,"proveedorId":1}
+  ]
+}
