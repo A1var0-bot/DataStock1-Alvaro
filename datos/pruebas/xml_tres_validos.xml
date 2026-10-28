@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo>
+  <producto>
+    <codigo>RAT-001</codigo><nombre>Ratón inalámbrico</nombre><precio>19.90</precio>
+    <stock>25</stock><categoriaId>1</categoriaId><proveedorId>1</proveedorId>
+  </producto>
+  <producto>
+    <codigo>ALT-002</codigo><nombre>Altavoces estéreo</nombre><precio>35.50</precio>
+    <stock>10</stock><categoriaId>3</categoriaId><proveedorId>2</proveedorId>
+  </producto>
+  <producto>
+    <codigo>HUB-003</codigo><nombre>Hub USB 4 puertos</nombre><precio>12</precio>
+    <stock>0</stock><categoriaId>1</categoriaId><proveedorId>2</proveedorId>
+  </producto>
+</catalogo>

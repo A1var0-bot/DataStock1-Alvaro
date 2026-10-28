@@ -61,7 +61,8 @@ public class ImportarJson {
     private JsonElement leerDocumento(Path ruta) throws ImporExeption {
         try {
             String contenido = Files.readString(ruta, StandardCharsets.UTF_8);
-            if (contenido.startsWith("")) {
+            // Algunos editores guardan una marca BOM al principio; Gson no la entiende y se quita
+            if (contenido.startsWith("﻿")) {
                 contenido = contenido.substring(1);
             }
             return JsonParser.parseString(contenido);

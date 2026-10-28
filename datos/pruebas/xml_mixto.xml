@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo>
+  <producto>
+    <codigo>OK-001</codigo><nombre>Producto correcto</nombre><precio>10</precio>
+    <stock>5</stock><categoriaId>1</categoriaId><proveedorId>1</proveedorId>
+  </producto>
+  <producto>
+    <codigo>BAD-01</codigo><nombre>Precio negativo</nombre><precio>-3</precio>
+    <stock>5</stock><categoriaId>1</categoriaId><proveedorId>1</proveedorId>
+  </producto>
+  <producto>
+    <codigo>BAD-02</codigo><nombre>Stock no numérico</nombre><precio>4.50</precio>
+    <stock>muchos</stock><categoriaId>1</categoriaId><proveedorId>1</proveedorId>
+  </producto>
+  <producto>
+    <codigo>BAD-03</codigo><nombre>Sin proveedor</nombre><precio>4.50</precio>
+    <stock>2</stock><categoriaId>1</categoriaId>
+  </producto>
+  <producto>
+    <codigo>ok-001</codigo><nombre>Repetido en minúsculas</nombre><precio>10</precio>
+    <stock>5</stock><categoriaId>1</categoriaId><proveedorId>1</proveedorId>
+  </producto>
+</catalogo>

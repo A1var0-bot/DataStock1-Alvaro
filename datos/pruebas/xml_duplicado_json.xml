@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo>
+  <producto>
+    <codigo>tec-001</codigo><nombre>Monitor repetido</nombre><precio>99</precio>
+    <stock>1</stock><categoriaId>2</categoriaId><proveedorId>2</proveedorId>
+  </producto>
+</catalogo>
