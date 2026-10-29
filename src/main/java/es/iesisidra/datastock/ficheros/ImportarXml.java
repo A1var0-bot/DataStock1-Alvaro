@@ -221,6 +221,7 @@ public class ImportarXml {
             return "el campo '" + campo + "' está vacío";
         }
         try {
+            Integer.parseInt(texto);
             return null;
         } catch (NumberFormatException e) {
             return "el campo '" + campo + "' debe ser un número entero válido";
