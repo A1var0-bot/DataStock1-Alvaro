@@ -2,6 +2,7 @@ package es.iesisidra.datastock.ui;
 
 import es.iesisidra.datastock.ficheros.ConsultarProductos;
 import es.iesisidra.datastock.ficheros.ExploradorRutas;
+import es.iesisidra.datastock.ficheros.ExportarProductos;
 import es.iesisidra.datastock.ficheros.ImporExeption;
 import es.iesisidra.datastock.ficheros.ImportarJson;
 import es.iesisidra.datastock.ficheros.ImportarXml;
@@ -22,6 +23,7 @@ public class MenuPrincipal {
     private final ImportarJson importadorJson;
     private final ImportarXml importadorXml;
     private final ConsultarProductos consultas;
+    private final ExportarProductos exportador;
 
     /** @param inventario colección común de productos de esta ejecución. */
     public MenuPrincipal(Inventario inventario) {
@@ -29,6 +31,7 @@ public class MenuPrincipal {
         this.importadorJson = new ImportarJson(inventario);
         this.importadorXml = new ImportarXml(inventario);
         this.consultas = new ConsultarProductos(inventario);
+        this.exportador = new ExportarProductos(inventario);
     }
 
     /** Ejecuta el menú principal hasta que el usuario selecciona salir. */
@@ -93,8 +96,8 @@ public class MenuPrincipal {
             System.out.println("0. Volver al menú principal");
             opcion = LectorConsola.leerOpcion("Selecciona una opción: ", 0, 2);
             switch (opcion) {
-                case 1 -> pendiente("RF-FIC-05 · Exportar JSON");
-                case 2 -> pendiente("RF-FIC-05 · Exportar XML");
+                case 1 -> { exportador.exportar("JSON"); LectorConsola.pausar(); }
+                case 2 -> { exportador.exportar("XML"); LectorConsola.pausar(); }
                 case 0 -> { }
                 default -> throw new IllegalStateException("Opción inesperada");
             }
