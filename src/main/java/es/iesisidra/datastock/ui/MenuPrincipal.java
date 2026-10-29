@@ -1,6 +1,7 @@
 package es.iesisidra.datastock.ui;
 
 import es.iesisidra.datastock.ficheros.ConsultarProductos;
+import es.iesisidra.datastock.ficheros.ControlarInventario;
 import es.iesisidra.datastock.ficheros.ExploradorRutas;
 import es.iesisidra.datastock.ficheros.ExportarProductos;
 import es.iesisidra.datastock.ficheros.ImporExeption;
@@ -24,6 +25,7 @@ public class MenuPrincipal {
     private final ImportarXml importadorXml;
     private final ConsultarProductos consultas;
     private final ExportarProductos exportador;
+    private final ControlarInventario control;
 
     /** @param inventario colección común de productos de esta ejecución. */
     public MenuPrincipal(Inventario inventario) {
@@ -32,6 +34,7 @@ public class MenuPrincipal {
         this.importadorXml = new ImportarXml(inventario);
         this.consultas = new ConsultarProductos(inventario);
         this.exportador = new ExportarProductos(inventario);
+        this.control = new ControlarInventario(inventario);
     }
 
     /** Ejecuta el menú principal hasta que el usuario selecciona salir. */
@@ -113,8 +116,8 @@ public class MenuPrincipal {
             System.out.println("0. Volver al menú principal");
             opcion = LectorConsola.leerOpcion("Selecciona una opción: ", 0, 2);
             switch (opcion) {
-                case 1 -> pendiente("RF-FIC-06 · Guardar inventario");
-                case 2 -> pendiente("RF-FIC-06 · Recuperar inventario");
+                case 1 -> { control.guardarInventario(); LectorConsola.pausar(); }
+                case 2 -> { control.recuperarInventario(); LectorConsola.pausar(); }
                 case 0 -> { }
                 default -> throw new IllegalStateException("Opción inesperada");
             }

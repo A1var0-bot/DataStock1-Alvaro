@@ -4,14 +4,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * RF-FIC-01: información básica sobre una ruta del sistema de archivos.
- * <p>Usa {@link File}, la clase clásica de Java para trabajar con rutas,
- * ficheros y directorios (criterio RA1-a).</p>
- */
 public class ExploradorRutas {
 
-    /** Muestra por consola qué es la ruta indicada y, si es un directorio, su contenido inmediato. */
     public void explorar(String textoRuta) {
         if (textoRuta == null || textoRuta.isBlank()) {
             System.out.println("Error: no has introducido ninguna ruta.");
@@ -37,7 +31,6 @@ public class ExploradorRutas {
     }
 
     private void mostrarDirectorio(File directorio) {
-        // listFiles() devuelve null si no se puede leer el directorio (permisos, error de E/S)
         File[] hijos = directorio.listFiles();
         if (hijos == null) {
             System.out.println("Error: no se puede acceder al contenido de " + directorio.getPath());
@@ -47,7 +40,7 @@ public class ExploradorRutas {
             System.out.println("El directorio está vacío.");
             return;
         }
-        // Primero los ficheros y luego los directorios; dentro de cada grupo, por nombre
+        
         Arrays.sort(hijos, Comparator.comparing(File::isDirectory)
                 .thenComparing(File::getName, String.CASE_INSENSITIVE_ORDER));
 
@@ -57,7 +50,7 @@ public class ExploradorRutas {
                 System.out.println("[DIR]     " + hijo.getName());
                 directorios++;
             } else {
-                System.out.println("[FICHERO] " + hijo.getName() + " " + hijo.length() + " bytes");
+                System.out.println("[FICHERO] " + hijo.getName() + hijo.length());
                 ficheros++;
             }
         }

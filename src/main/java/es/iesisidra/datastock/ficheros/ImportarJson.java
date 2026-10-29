@@ -61,8 +61,7 @@ public class ImportarJson {
     private JsonElement leerDocumento(Path ruta) throws ImporExeption {
         try {
             String contenido = Files.readString(ruta, StandardCharsets.UTF_8);
-            // Algunos editores guardan una marca BOM al principio; Gson no la entiende y se quita
-            // 0xFEFF es el código de la marca BOM (se escribe como número para que el editor no lo borre)
+            
             if (!contenido.isEmpty() && contenido.charAt(0) == 0xFEFF) {
                 contenido = contenido.substring(1);
             }
@@ -121,7 +120,6 @@ public class ImportarJson {
         String categoriaId = texto(registro, "categoriaId");
         String proveedorId = texto(registro, "proveedorId");
 
-        // 1) Comprobar que los números son números
         String error = comprobarDecimal(precio, "precio");
         if (error != null) {
             return error;
@@ -202,16 +200,16 @@ public class ImportarJson {
 
     private String comprobarEntero(String texto, String campo) {
         if (texto == null) {
-            return "falta el campo '" + campo + "'";
+            return "falta el campo: " + campo;
         }
         if (texto.isEmpty()) {
-            return "el campo '" + campo + "' está vacío";
+            return "el campo: " + campo + " está vacío";
         }
         try {
             Integer.parseInt(texto);
             return null;
         } catch (NumberFormatException e) {
-            return "el campo '" + campo + "' debe ser un número entero válido";
+            return "el campo: " + campo + " debe ser un número entero válido";
         }
     }
 
