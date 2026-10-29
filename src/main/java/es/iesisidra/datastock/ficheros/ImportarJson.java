@@ -62,7 +62,8 @@ public class ImportarJson {
         try {
             String contenido = Files.readString(ruta, StandardCharsets.UTF_8);
             // Algunos editores guardan una marca BOM al principio; Gson no la entiende y se quita
-            if (contenido.startsWith("﻿")) {
+            // 0xFEFF es el código de la marca BOM (se escribe como número para que el editor no lo borre)
+            if (!contenido.isEmpty() && contenido.charAt(0) == 0xFEFF) {
                 contenido = contenido.substring(1);
             }
             return JsonParser.parseString(contenido);
