@@ -13,7 +13,6 @@ public class ConexionBD {
     private static final int SEGUNDOS_ESPERA = 5;
 
     /**
-     * Devuelve una conexión nueva. Quien la pide debe cerrarla (try-with-resources).
      * @throws SQLException si falta la configuración o MySQL rechaza la conexión
      */
     public static Connection obtenerConexion() throws SQLException {
