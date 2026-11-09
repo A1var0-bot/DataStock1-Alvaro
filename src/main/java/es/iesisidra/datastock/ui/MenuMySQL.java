@@ -45,10 +45,10 @@ public class MenuMySQL {
                     new MenuProductos().iniciar();
                     break;
                 case 5:
-                    pendiente("7.5 Consultar y buscar productos (RF-JDBC-04)");
+                    new MenuConsultasMySQL().iniciar();
                     break;
                 case 6:
-                    pendiente("7.6 Registrar movimientos de stock (RF-JDBC-05)");
+                    new MenuMovimientos().iniciar();
                     break;
                 case 7:
                     pendiente("7.7 Historial de movimientos (RF-JDBC-06)");
