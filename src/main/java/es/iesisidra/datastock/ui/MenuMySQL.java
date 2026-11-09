@@ -1,6 +1,7 @@
 package es.iesisidra.datastock.ui;
 
 import es.iesisidra.datastock.comprobaciones.ComprobarConexion;
+import es.iesisidra.datastock.servicio.ImportadorMySQL;
 import es.iesisidra.datastock.servicio.Inventario;
 import es.iesisidra.datastock.util.LectorConsola;
 import es.iesisidra.datastock.util.Mensajes;
@@ -54,7 +55,8 @@ public class MenuMySQL {
                     new MenuHistorial().iniciar();
                     break;
                 case 8:
-                    pendiente("7.8 Importar de memoria a MySQL (RF-JDBC-07)");
+                    new ImportadorMySQL(inventario).importar();
+                    LectorConsola.pausar();
                     break;
                 case 9:
                     pendiente("7.9 Demostración de transacción (RF-JDBC-08)");
