@@ -42,7 +42,7 @@ public class MenuMySQL {
                     new MenuProveedores().iniciar();
                     break;
                 case 4:
-                    pendiente("7.4 Gestionar productos (RF-JDBC-03)");
+                    new MenuProductos().iniciar();
                     break;
                 case 5:
                     pendiente("7.5 Consultar y buscar productos (RF-JDBC-04)");
