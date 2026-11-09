@@ -9,3 +9,5 @@ datos/salidas/*
 !datos/salidas/.gitkeep
 # UT2: configuración local con la contraseña de MySQL
 datastock.properties
+# UT2: base de datos de la demostración SQLite (se crea al ejecutar DemoSQLite)
+datos/sqlite/*.db
