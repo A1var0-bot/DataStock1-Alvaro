@@ -1,0 +1,5 @@
+# Copia este fichero como datastock.properties y pon tus datos.
+# datastock.properties está en .gitignore: tu contraseña no se sube a GitHub.
+url=jdbc:mysql://localhost:3306/datastock?useSSL=false&allowPublicKeyRetrieval=true
+usuario=root
+clave=OCULTO
