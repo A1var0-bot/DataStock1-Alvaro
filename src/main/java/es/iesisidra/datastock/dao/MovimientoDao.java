@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import es.iesisidra.datastock.configuracion.ConexionBD;
 import es.iesisidra.datastock.modelo.MovimientoStock;
@@ -35,6 +37,36 @@ public class MovimientoDao {
                 return null;
             }
         }
+    }
+
+        public List<MovimientoStock> listarTodos() throws SQLException {
+        String sql = "SELECT id, producto_codigo, tipo, cantidad, fecha, stock_anterior, stock_posterior "
+                   + "FROM movimiento_stock ORDER BY fecha, id";
+        List<MovimientoStock> lista = new ArrayList<>();
+        try (Connection conexion = ConexionBD.obtenerConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql);
+             ResultSet resultado = sentencia.executeQuery()) {
+            while (resultado.next()) {
+                lista.add(leerMovimiento(resultado));
+            }
+        }
+        return lista;
+    }
+
+    public List<MovimientoStock> listarPorProducto(String codigo) throws SQLException {
+        String sql = "SELECT id, producto_codigo, tipo, cantidad, fecha, stock_anterior, stock_posterior "
+                   + "FROM movimiento_stock WHERE producto_codigo = ? ORDER BY fecha, id";
+        List<MovimientoStock> lista = new ArrayList<>();
+        try (Connection conexion = ConexionBD.obtenerConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+            sentencia.setString(1, codigo);
+            try (ResultSet resultado = sentencia.executeQuery()) {
+                while (resultado.next()) {
+                    lista.add(leerMovimiento(resultado));
+                }
+            }
+        }
+        return lista;
     }
 
     private MovimientoStock leerMovimiento(ResultSet resultado) throws SQLException {

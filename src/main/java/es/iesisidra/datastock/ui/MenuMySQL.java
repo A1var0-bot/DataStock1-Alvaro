@@ -51,7 +51,7 @@ public class MenuMySQL {
                     new MenuMovimientos().iniciar();
                     break;
                 case 7:
-                    pendiente("7.7 Historial de movimientos (RF-JDBC-06)");
+                    new MenuHistorial().iniciar();
                     break;
                 case 8:
                     pendiente("7.8 Importar de memoria a MySQL (RF-JDBC-07)");
