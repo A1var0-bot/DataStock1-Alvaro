@@ -30,12 +30,20 @@ public class MenuCategorias {
             opcion = LectorConsola.leerOpcion("Selecciona una opción: ", 0, 4);
 
             switch (opcion) {
-                case 1: alta();
-                case 2: listar();
-                case 3: modificar();
-                case 4: eliminar();
-                case 0: { }
-                default: Mensajes.aviso("Opción no válida.");
+                case 1:
+                    alta();
+                    break;
+                case 2:
+                    listar();
+                    break;
+                case 3:
+                    modificar();
+                    break;
+                case 4:
+                    eliminar();
+                    break;
+                default:
+                    break;
             }
             if (opcion != 0) {
                 LectorConsola.pausar();

@@ -38,15 +38,29 @@ public class MenuMySQL {
                     new MenuCategorias().iniciar();
                     break;
                       
-                case 3: pendiente("7.3 Gestionar proveedores (RF-JDBC-02)");
-                case 4: pendiente("7.4 Gestionar productos (RF-JDBC-03)");
-                case 5: pendiente("7.5 Consultar y buscar productos (RF-JDBC-04)");
-                case 6: pendiente("7.6 Registrar movimientos de stock (RF-JDBC-05)");
-                case 7: pendiente("7.7 Historial de movimientos (RF-JDBC-06)");
-                case 8: pendiente("7.8 Importar de memoria a MySQL (RF-JDBC-07)");
-                case 9: pendiente("7.9 Demostración de transacción (RF-JDBC-08)");
-                case 0: { }
-                default: Mensajes.aviso("Opción no válida.");
+                case 3:
+                    new MenuProveedores().iniciar();
+                    break;
+                case 4:
+                    pendiente("7.4 Gestionar productos (RF-JDBC-03)");
+                    break;
+                case 5:
+                    pendiente("7.5 Consultar y buscar productos (RF-JDBC-04)");
+                    break;
+                case 6:
+                    pendiente("7.6 Registrar movimientos de stock (RF-JDBC-05)");
+                    break;
+                case 7:
+                    pendiente("7.7 Historial de movimientos (RF-JDBC-06)");
+                    break;
+                case 8:
+                    pendiente("7.8 Importar de memoria a MySQL (RF-JDBC-07)");
+                    break;
+                case 9:
+                    pendiente("7.9 Demostración de transacción (RF-JDBC-08)");
+                    break;
+                default:
+                    break;
             }
         } while (opcion != 0);
     }
