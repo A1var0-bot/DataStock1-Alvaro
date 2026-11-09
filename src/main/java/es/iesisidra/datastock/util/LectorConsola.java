@@ -54,5 +54,7 @@ public final class LectorConsola {
     }
 
     /** Detiene el menú hasta que el usuario pulse Intro. */
-    public static void pausar() { leerTexto("Pulsa Intro para continuar..."); }
+    public static void pausar() { 
+        leerTexto("Pulsa Intro para continuar..."); 
+    }
 }

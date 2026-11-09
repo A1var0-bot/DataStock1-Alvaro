@@ -57,7 +57,13 @@ public class ConexionBD {
             return "usuario o contraseña incorrectos.";
         }
         if (codigo == 1049) {
-            return "la base de datos no existe. Ejecuta antes el script DataStock_BD_MySQL.sql.";
+            return "la base de datos no existe. Ejecuta antes el script DataStock";
+        }
+        if (codigo == 1062) {
+            return "ese dato ya existe en la base de datos.";
+        }
+        if (codigo == 1451) {
+            return "no se puede borrar porque tiene registros asociados. No se ha borrado nada.";
         }
         if (estado != null && estado.startsWith("08")) {
             return "no se puede conectar con el servidor. Comprueba que MySQL está arrancado y la URL es correcta.";
