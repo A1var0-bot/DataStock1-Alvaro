@@ -81,4 +81,23 @@ public class CategoriaDao {
             return sentencia.executeUpdate();
         }
     }
+
+        public int insertar(Connection conexion, Categoria categoria) throws SQLException {
+        String sql = "INSERT INTO categoria (id, nombre) VALUES (?, ?)";
+        try (PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+            sentencia.setInt(1, categoria.getId());
+            sentencia.setString(2, categoria.getNombre());
+            return sentencia.executeUpdate();
+        }
+    }
+
+    public int maximoId() throws SQLException {
+        String sql = "SELECT COALESCE(MAX(id), 0) FROM categoria";
+        try (Connection conexion = ConexionBD.obtenerConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql);
+             ResultSet resultado = sentencia.executeQuery()) {
+            resultado.next();
+            return resultado.getInt(1);
+        }
+    }
 }

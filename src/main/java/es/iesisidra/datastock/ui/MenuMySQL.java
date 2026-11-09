@@ -1,6 +1,7 @@
 package es.iesisidra.datastock.ui;
 
 import es.iesisidra.datastock.comprobaciones.ComprobarConexion;
+import es.iesisidra.datastock.servicio.DemoTransacciones;
 import es.iesisidra.datastock.servicio.ImportadorMySQL;
 import es.iesisidra.datastock.servicio.Inventario;
 import es.iesisidra.datastock.util.LectorConsola;
@@ -59,7 +60,8 @@ public class MenuMySQL {
                     LectorConsola.pausar();
                     break;
                 case 9:
-                    pendiente("7.9 Demostración de transacción (RF-JDBC-08)");
+                    new DemoTransacciones().ejecutar();
+                    LectorConsola.pausar();
                     break;
                 default:
                     break;
