@@ -3,6 +3,8 @@ package es.iesisidra.datastock.servicio;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.iesisidra.datastock.modelo.Producto;
+
 /**
  * Resumen de una importación: cuántos registros se encontraron, cuántos se
  * incorporaron y por qué se rechazaron los demás.
@@ -13,6 +15,13 @@ public class ResultadoImportacion {
     private int encontrados;
     private int importados;
     private final List<String> incidencias = new ArrayList<>();
+    private final List<Producto> productos = new ArrayList<>();
+
+    /** Guarda un producto que ha superado la validación (no lo añade al inventario). */
+    public void agregarProductoValido(Producto producto) { productos.add(producto); }
+
+    /** Productos válidos leídos del fichero. */
+    public List<Producto> getProductos() { return productos; }
 
     /** Cuenta un registro leído del fichero (válido o no). */
     public void registrarEncontrado() { encontrados++; }
