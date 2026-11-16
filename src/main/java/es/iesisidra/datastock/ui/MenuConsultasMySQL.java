@@ -2,7 +2,9 @@ package es.iesisidra.datastock.ui;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
+import es.iesisidra.datastock.componentes.ConsultaProductoJdbc;
 import es.iesisidra.datastock.configuracion.ConexionBD;
 import es.iesisidra.datastock.dao.ConsultaProductosDao;
 import es.iesisidra.datastock.modelo.ProductoDetalle;
@@ -15,6 +17,7 @@ public class MenuConsultasMySQL {
     private static final String LINEA = "------------------------------------------------------------";
 
     private final ConsultaProductosDao dao = new ConsultaProductosDao();
+    private final ConsultaProductoJdbc consultaPorCodigo = new ConsultaProductoJdbc();
 
     public void iniciar() {
         int opcion;
@@ -40,10 +43,8 @@ public class MenuConsultasMySQL {
                 case 4:
                     stockBajo();
                     break;
-                case 0:{ 
-
-                }
-                break;
+                case 0:
+                    break;
                 default:
                     Mensajes.aviso("Opción no válida.");
                     break;
@@ -77,13 +78,13 @@ public class MenuConsultasMySQL {
             return;
         }
         try {
-            ProductoDetalle producto = dao.buscarPorCodigo(codigo);
-            if (producto == null) {
+            Optional<ProductoDetalle> encontrado = consultaPorCodigo.buscarPorCodigo(codigo);
+            if (encontrado.isEmpty()) {
                 Mensajes.aviso("No se ha encontrado ningún producto con el código " + codigo + ".");
                 return;
             }
             System.out.println(LINEA);
-            mostrarFicha(producto);
+            mostrarFicha(encontrado.get());
             System.out.println(LINEA);
         } catch (SQLException e) {
             Mensajes.error(ConexionBD.explicarError(e));

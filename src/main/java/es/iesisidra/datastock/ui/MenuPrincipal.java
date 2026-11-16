@@ -6,6 +6,8 @@ import es.iesisidra.datastock.ficheros.ExploradorRutas;
 import es.iesisidra.datastock.ficheros.ExportarProductos;
 import es.iesisidra.datastock.ficheros.ImporExeption;
 import es.iesisidra.datastock.ficheros.ImportarJson;
+import es.iesisidra.datastock.componentes.LectorJson;
+import es.iesisidra.datastock.util.Mensajes;
 import es.iesisidra.datastock.ficheros.ImportarXml;
 import es.iesisidra.datastock.servicio.Inventario;
 import es.iesisidra.datastock.servicio.ResultadoImportacion;
@@ -21,7 +23,7 @@ import es.iesisidra.datastock.util.LectorConsola;
 public class MenuPrincipal {
     private final Inventario inventario;
     // Todas las clases reciben el MISMO inventario, así lo importado se ve en las consultas
-    private final ImportarJson importadorJson;
+    private final LectorJson lectorJson;
     private final ImportarXml importadorXml;
     private final ConsultarProductos consultas;
     private final ExportarProductos exportador;
@@ -30,7 +32,7 @@ public class MenuPrincipal {
     /** @param inventario colección común de productos de esta ejecución. */
     public MenuPrincipal(Inventario inventario) {
         this.inventario = inventario;
-        this.importadorJson = new ImportarJson(inventario);
+        this.lectorJson = new LectorJson();
         this.importadorXml = new ImportarXml(inventario);
         this.consultas = new ConsultarProductos(inventario);
         this.exportador = new ExportarProductos(inventario);
@@ -177,11 +179,17 @@ public class MenuPrincipal {
         System.out.println("\n===== IMPORTAR JSON =====");
         String ruta = LectorConsola.leerTexto("Ruta: ");
         try {
-            ResultadoImportacion resultado = importadorJson.importacion(ruta);
+            ResultadoImportacion resultado = lectorJson.leer(ruta);
+            inventario.agregarProductos(resultado);
             resultado.mostrar();
+            if (resultado.getImportados() > 0) {
+                Mensajes.ok(resultado.getImportados() + " producto(s) añadido(s) al inventario.");
+            } else {
+                Mensajes.aviso("No se ha añadido ningún producto al inventario.");
+            }
         } catch (ImporExeption e) {
-            System.out.println("Importación cancelada: " + e.getMessage());
-            System.out.println("No se ha añadido ningún producto; el inventario no ha cambiado.");
+            Mensajes.error("Importación cancelada: " + e.getMessage());
+            Mensajes.error("No se ha añadido ningún producto; el inventario no ha cambiado.");
         }
         LectorConsola.pausar();
     }

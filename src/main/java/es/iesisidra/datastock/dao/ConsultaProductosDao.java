@@ -28,22 +28,6 @@ public class ConsultaProductosDao {
         }
     }
 
-    /** 2. Búsqueda exacta por código. @return el producto, o null si no existe. */
-    public ProductoDetalle buscarPorCodigo(String codigo) throws SQLException {
-        String sql = SELECT_CON_JOIN + "WHERE p.codigo = ?";
-        try (Connection conexion = ConexionBD.obtenerConexion();
-             PreparedStatement sentencia = conexion.prepareStatement(sql)) {
-            sentencia.setString(1, codigo);
-            try (ResultSet resultado = sentencia.executeQuery()) {
-                List<ProductoDetalle> lista = leerFilas(resultado);
-                if (lista.isEmpty()) {
-                    return null;
-                }
-                return lista.get(0);
-            }
-        }
-    }
-
     public List<ProductoDetalle> buscarPorNombre(String fragmento) throws SQLException {
         String sql = SELECT_CON_JOIN + "WHERE p.nombre LIKE ? ORDER BY p.codigo";
         try (Connection conexion = ConexionBD.obtenerConexion();
